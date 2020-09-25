@@ -5,6 +5,9 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
+/**
+ * 主页面
+ */
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -17,6 +20,10 @@ class MainActivity : AppCompatActivity() {
 
         lineChart.setOnClickListener {
             startActivity(Intent(this, LineChartActivity::class.java))
+        }
+
+        curveChart.setOnClickListener {
+            startActivity(Intent(this, CurveChartActivity::class.java))
         }
     }
 

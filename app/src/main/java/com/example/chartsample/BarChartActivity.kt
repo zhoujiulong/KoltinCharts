@@ -6,6 +6,9 @@ import com.example.lib.ChartDataBean
 import kotlinx.android.synthetic.main.activity_bar_chart.*
 import java.math.BigDecimal
 
+/**
+ * 条形图
+ */
 class BarChartActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
