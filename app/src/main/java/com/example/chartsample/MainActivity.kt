@@ -15,7 +15,9 @@ class MainActivity : AppCompatActivity() {
             startActivity(Intent(this, BarChartActivity::class.java))
         }
 
-
+        lineChart.setOnClickListener {
+            startActivity(Intent(this, LineChartActivity::class.java))
+        }
     }
 
 }

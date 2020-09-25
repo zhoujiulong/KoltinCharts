@@ -1,37 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorWhite"
-    android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".LineChartActivity">
 
     <TextView
-        android:id="@+id/barChart"
+        android:id="@+id/resetData"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:background="#9B9B9B"
         android:gravity="center"
         android:padding="20dp"
-        android:text="条形图"
+        android:text="重置数据"
         android:textColor="#000000"
         android:textSize="20dp" />
 
-    <TextView
-        android:id="@+id/lineChart"
+    <com.example.lib.LineChartView
+        android:id="@+id/lineChartView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:background="#9B9B9B"
-        android:gravity="center"
-        android:padding="20dp"
-        android:text="折线图"
-        android:textColor="#000000"
-        android:textSize="20dp" />
+        android:layout_height="300dp"
+        android:layout_marginTop="200dp"
+        android:padding="30dp" />
 
-</LinearLayout>
+</RelativeLayout>
+
+
+
+
 
 
 
