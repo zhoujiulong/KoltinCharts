@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    tools:context=".BarChartActivity">
+
+    <TextView
+        android:id="@+id/resetData"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="#9B9B9B"
+        android:gravity="center"
+        android:padding="20dp"
+        android:text="重置数据"
+        android:textColor="#000000"
+        android:textSize="20dp" />
+
+    <com.example.lib.BarChartView
+        android:id="@+id/barChartView"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_marginTop="200dp"
+        android:padding="30dp"
+        app:BarColor="#9884FF"
+        app:BarRadius="6dp"
+        app:BarTopTextBottomMargin="2dp"
+        app:BarTopTextColor="#CE0E2D"
+        app:BarTopTextSize="6dp"
+        app:LineColor="#9B9B9B"
+        app:XTextColor="#000000"
+        app:XTextSize="8dp"
+        app:XTextTopMargin="4dp"
+        app:YTextColor="#000000"
+        app:YTextRightMargin="4dp"
+        app:YTextSize="8dp" />
+
+</RelativeLayout>
