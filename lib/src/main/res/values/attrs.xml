@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <attr name="YTextSize" format="dimension" />
+    <attr name="YTextRightMargin" format="dimension" />
+    <attr name="YTextColor" format="color" />
+    <attr name="XTextSize" format="dimension" />
+    <attr name="XTextTopMargin" format="dimension" />
+    <attr name="XTextColor" format="color" />
+    <attr name="FormLineColor" format="color" />
+
+    <declare-styleable name="BarChartView">
+        <attr name="YTextSize" />
+        <attr name="YTextRightMargin" />
+        <attr name="YTextColor" />
+        <attr name="XTextSize" />
+        <attr name="XTextTopMargin" />
+        <attr name="XTextColor" />
+        <attr name="FormLineColor" />
+
+        <attr name="BarTopTextSize" format="dimension" />
+        <attr name="BarTopTextBottomMargin" format="dimension" />
+        <attr name="BarTopTextColor" format="color" />
+        <attr name="BarRadius" format="dimension" />
+        <attr name="BarColor" format="color" />
+    </declare-styleable>
+
+    <declare-styleable name="LineChartView">
+        <attr name="YTextSize" />
+        <attr name="YTextRightMargin" />
+        <attr name="YTextColor" />
+        <attr name="XTextSize" />
+        <attr name="XTextTopMargin" />
+        <attr name="XTextColor" />
+        <attr name="FormLineColor" />
+
+        <attr name="LineTextSize" format="dimension" />
+        <attr name="LineTextBottomMargin" format="dimension" />
+        <attr name="LineTextColor" format="color" />
+        <attr name="LineColor" format="color" />
+        <attr name="ContentBgColor" format="color" />
+        <attr name="DotRadius" format="dimension" />
+        <attr name="DotColor" format="color" />
+    </declare-styleable>
+
+</resources>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

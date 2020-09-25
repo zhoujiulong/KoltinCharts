@@ -80,7 +80,7 @@ class BarChartView : View {
     private var mBarWidth: Float = 20F//条形的宽度
     private var mBarColor: Int = Color.parseColor("#2684FF")//条形的颜色
     private var mBarSpace: Float = 20F//条形与条形之前的距离
-    private var mLineColor: Int = Color.parseColor("#B4BBC6")//表格中线的颜色
+    private var mFormLineColor: Int = Color.parseColor("#B4BBC6")//表格中线的颜色
 
     //y 方向有多少等分
     private var mYSpace: Int = 6
@@ -140,7 +140,7 @@ class BarChartView : View {
                 ta.getColor(R.styleable.BarChartView_BarTopTextColor, mBarTopTextColor)
             mBarRadius = ta.getDimension(R.styleable.BarChartView_BarRadius, mBarRadius)
             mBarColor = ta.getColor(R.styleable.BarChartView_BarColor, mBarColor)
-            mLineColor = ta.getColor(R.styleable.BarChartView_LineColor, mLineColor)
+            mFormLineColor = ta.getColor(R.styleable.BarChartView_FormLineColor, mFormLineColor)
             ta.recycle()
         }
         mAni.start()
@@ -196,7 +196,7 @@ class BarChartView : View {
      * 绘制表格的线
      */
     private fun drawFormLine(canvas: Canvas) {
-        mPaint.color = mLineColor
+        mPaint.color = mFormLineColor
         val x = paddingLeft + mYTextMaxWidth + mYTextRightMargin
         var y = measuredHeight - paddingBottom - (mXTextSize + mXTextTopMargin)
 

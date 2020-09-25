@@ -49,7 +49,7 @@ class LineChartView : View {
     //动画加载进度
     private var mAniProgress: Float = 0F
     private val mAni by lazy {
-        val ani = ValueAnimator.ofFloat(0F, 1F, 0.8F, 1F)
+        val ani = ValueAnimator.ofFloat(0F, 1F)
         ani.duration = 1380
         ani.startDelay = 100
         ani.repeatCount = 0
@@ -64,6 +64,9 @@ class LineChartView : View {
         ani
     }
 
+    private var mFormContentWidth: Float = 0F
+    private var mFormContentHeight: Float = 0F
+
     private var mYTextSize: Float = 20F//Y方向文字大小
     private var mYTextMaxWidth: Float = 120F//Y方向文字最大宽度
     private var mYTextRightMargin: Float = 20F//Y方向文字右侧离表内容的距离
@@ -77,7 +80,8 @@ class LineChartView : View {
     private var mLineTextBottomMargin = 12F//条形顶部描述文字底部离条形的距离
     private var mLineTextColor: Int = Color.parseColor("#1B4073")//条形顶部文字颜色
 
-    private var mLineColor: Int = Color.parseColor("#88ABCDEF")//表格折线的颜色
+    private var mLineColor: Int = Color.parseColor("#000000")//表格折线的颜色
+    private var mContentBgColor: Int = Color.parseColor("#88ABCDEF")//表格内容背景颜色
     private var mDotRadius: Float = 4F//折线中点的半径
     private var mDotColor: Int = Color.parseColor("#000000")//折线圆点颜色
     private var mFormLineColor: Int = Color.parseColor("#B4BBC6")//表格线的颜色
@@ -120,16 +124,25 @@ class LineChartView : View {
 
     private fun init(attrs: AttributeSet?) {
         attrs?.apply {
-            val ta = context.obtainStyledAttributes(attrs, R.styleable.BarChartView)
-            mYTextSize = ta.getDimension(R.styleable.BarChartView_YTextSize, mYTextSize)
+            val ta = context.obtainStyledAttributes(attrs, R.styleable.LineChartView)
+            mYTextSize = ta.getDimension(R.styleable.LineChartView_YTextSize, mYTextSize)
             mYTextRightMargin =
-                ta.getDimension(R.styleable.BarChartView_YTextRightMargin, mYTextRightMargin)
-            mYTextColor = ta.getColor(R.styleable.BarChartView_YTextColor, mYTextColor)
-            mXTextSize = ta.getDimension(R.styleable.BarChartView_XTextSize, mXTextSize)
+                ta.getDimension(R.styleable.LineChartView_YTextRightMargin, mYTextRightMargin)
+            mYTextColor = ta.getColor(R.styleable.LineChartView_YTextColor, mYTextColor)
+            mXTextSize = ta.getDimension(R.styleable.LineChartView_XTextSize, mXTextSize)
             mXTextTopMargin =
-                ta.getDimension(R.styleable.BarChartView_XTextTopMargin, mXTextTopMargin)
-            mXTextColor = ta.getColor(R.styleable.BarChartView_XTextColor, mXTextColor)
-
+                ta.getDimension(R.styleable.LineChartView_XTextTopMargin, mXTextTopMargin)
+            mXTextColor = ta.getColor(R.styleable.LineChartView_XTextColor, mXTextColor)
+            mLineTextSize = ta.getDimension(R.styleable.LineChartView_LineTextSize, mLineTextSize)
+            mLineTextBottomMargin = ta.getDimension(
+                R.styleable.LineChartView_LineTextBottomMargin, mLineTextBottomMargin
+            )
+            mLineTextColor = ta.getColor(R.styleable.LineChartView_LineTextColor, mLineTextColor)
+            mLineColor = ta.getColor(R.styleable.LineChartView_LineColor, mLineColor)
+            mContentBgColor = ta.getColor(R.styleable.LineChartView_ContentBgColor, mContentBgColor)
+            mDotRadius = ta.getDimension(R.styleable.LineChartView_DotRadius, mDotRadius)
+            mDotColor = ta.getColor(R.styleable.LineChartView_DotColor, mDotColor)
+            mFormLineColor = ta.getColor(R.styleable.LineChartView_FormLineColor, mFormLineColor)
             ta.recycle()
         }
         mAni.start()
@@ -143,12 +156,12 @@ class LineChartView : View {
     private fun setMeasureData() {
         initYSpaceSize()
         mYTextMaxWidth = getStringWidth("${getMaxNum().toInt()}", mYTextSize)
-        val formWidth =
+        mFormContentWidth =
             measuredWidth - (paddingLeft + paddingRight) - (mYTextMaxWidth + mYTextRightMargin)
-        mFormXSpace = formWidth / mData.size.toFloat()
-        val formHeight =
+        mFormXSpace = mFormContentWidth / mData.size.toFloat()
+        mFormContentHeight =
             measuredHeight - (paddingTop + paddingBottom) - (mXTextSize + mXTextTopMargin) - mFormTopEmpty
-        mFormYSpace = formHeight / mYSpace
+        mFormYSpace = mFormContentHeight / mYSpace
     }
 
     override fun onDraw(canvas: Canvas) {
@@ -218,7 +231,6 @@ class LineChartView : View {
         for (i in 0 until mData.size) {
             tempX = formContentStartX + mFormXSpace * (i + 1)
             tempHeight = (mData[i].data * mFormYSpace.toBigDecimal() / mYSpaceSize).toFloat()
-            tempHeight *= mAniProgress//按照动画加载进度计算高度
             lineDotList.add(Dot(tempX, formContentBottom - tempHeight))
             bottomStrDotList.add(Dot(tempX, bottomTextY))
         }
@@ -235,12 +247,19 @@ class LineChartView : View {
             )
         }
 
+        //按动画进度绘制表格
+        if (mAniProgress < 1) {
+            canvas.save()
+            val endX = formContentStartX + mFormContentWidth * mAniProgress
+            canvas.clipRect(0, 0, endX.toInt(), measuredHeight)
+        }
+
         //绘制折线
         mPath.reset()
         mPath.moveTo(formContentStartX, formContentBottom)
         var previousX = formContentStartX
         var previousY = formContentBottom
-        mPaint.color = mDotColor
+        mPaint.color = mLineColor
         lineDotList.forEach {
             mPath.lineTo(it.x, it.y)
             canvas.drawLine(previousX, previousY, it.x, it.y, mPaint)
@@ -251,7 +270,7 @@ class LineChartView : View {
             lineDotList[lineDotList.size - 1].x, formContentBottom
         )
         mPath.close()
-        mPaint.color = mLineColor
+        mPaint.color = mContentBgColor
         canvas.drawPath(mPath, mPaint)
 
         //绘制折线中的圆点和圆点上的文字
@@ -266,6 +285,8 @@ class LineChartView : View {
                 it.value.y - mLineTextBottomMargin, mPaint
             )
         }
+
+        if (mAniProgress < 1) canvas.restore()
     }
 
     private data class Dot(
