@@ -1,8 +1,9 @@
 package com.example.chartsample
 
+import android.graphics.Color
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.example.lib.ChartDataBean
+import com.example.lib.PieChartBean
 import kotlinx.android.synthetic.main.activity_pie_chart.*
 import java.math.BigDecimal
 
@@ -23,12 +24,14 @@ class PieChartActivity : AppCompatActivity() {
     }
 
     private fun setChartData() {
-        val list = arrayListOf<ChartDataBean>()
-        list.add(ChartDataBean("微信", BigDecimal(52000)))
-        list.add(ChartDataBean("支付宝", BigDecimal(39000)))
-        list.add(ChartDataBean("余额", BigDecimal(28800)))
-        list.add(ChartDataBean("现金", BigDecimal(20000)))
-        list.add(ChartDataBean("标记收款", BigDecimal(500)))
+        val list = arrayListOf<PieChartBean>()
+        list.add(PieChartBean("微信收款", BigDecimal(30), Color.BLUE))
+        list.add(PieChartBean("支付宝收款", BigDecimal(22), Color.GREEN))
+        list.add(PieChartBean("余额收款", BigDecimal(21), Color.LTGRAY))
+        list.add(PieChartBean("现金收款", BigDecimal(15), Color.CYAN))
+        list.add(PieChartBean("标记收款", BigDecimal(7), Color.MAGENTA))
+        list.add(PieChartBean("其它收款", BigDecimal(5), Color.DKGRAY))
+        pieChartView.mData = list
     }
 }
 

@@ -1,17 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorWhite"
     tools:context=".PieChartActivity">
 
-    <com.example.lib.BarChartView
-        android:id="@+id/barChartView"
+    <com.example.lib.PieChartView
+        android:id="@+id/pieChartView"
         android:layout_width="match_parent"
         android:layout_height="300dp"
         android:layout_centerInParent="true"
-        android:padding="30dp" />
+        android:padding="45dp"
+        app:PieRadius="100dp"
+        app:PieTextColor="#000000"
+        app:PieTextSize="8dp"
+        app:TextSize="10dp"
+        app:TextTopMargin="6dp" />
 
     <TextView
         android:id="@+id/resetData"

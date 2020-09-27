@@ -70,6 +70,14 @@
         <attr name="FormLineColor" />
     </declare-styleable>
 
+    <declare-styleable name="PieChartView">
+        <attr name="PieRadius" format="dimension" />
+        <attr name="TextSize" format="dimension" />
+        <attr name="TextTopMargin" format="dimension" />
+        <attr name="PieTextSize" format="dimension" />
+        <attr name="PieTextColor" format="color" />
+    </declare-styleable>
+
 </resources>
 
 

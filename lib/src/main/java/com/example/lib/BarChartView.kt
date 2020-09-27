@@ -15,7 +15,7 @@ import java.math.BigDecimal
  */
 class BarChartView : View {
 
-    var mData: ArrayList<ChartDataBean> = arrayListOf()
+    var mData: List<ChartBean> = arrayListOf()
         set(value) {
             field = value
             mAni.cancel()
@@ -144,7 +144,6 @@ class BarChartView : View {
             mFormLineColor = ta.getColor(R.styleable.BarChartView_FormLineColor, mFormLineColor)
             ta.recycle()
         }
-        mAni.start()
     }
 
     override fun onLayout(changed: Boolean, left: Int, top: Int, right: Int, bottom: Int) {
