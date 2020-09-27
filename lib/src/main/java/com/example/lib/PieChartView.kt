@@ -138,6 +138,7 @@ class PieChartView : View {
 
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
+        if (mData.isEmpty()) return
 
         //绘制饼状图
         var startAngle = -90F

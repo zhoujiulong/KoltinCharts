@@ -165,7 +165,7 @@ class LineChartView : View {
 
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
-        if (mData.size == 0) return
+        if (mData.isEmpty()) return
 
         drawLefYText(canvas)
         drawFormLine(canvas)
