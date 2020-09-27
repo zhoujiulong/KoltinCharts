@@ -8,6 +8,18 @@
     <attr name="XTextTopMargin" format="dimension" />
     <attr name="XTextColor" format="color" />
     <attr name="FormLineColor" format="color" />
+    <attr name="LineTextSize" format="dimension" />
+    <attr name="LineTextBottomMargin" format="dimension" />
+    <attr name="LineTextColor" format="color" />
+    <attr name="LineColor" format="color" />
+    <attr name="ContentBgColor" format="color" />
+    <attr name="DotRadius" format="dimension" />
+    <attr name="DotColor" format="color" />
+    <attr name="BarTopTextSize" format="dimension" />
+    <attr name="BarTopTextBottomMargin" format="dimension" />
+    <attr name="BarTopTextColor" format="color" />
+    <attr name="BarRadius" format="dimension" />
+    <attr name="BarColor" format="color" />
 
     <declare-styleable name="BarChartView">
         <attr name="YTextSize" />
@@ -17,12 +29,11 @@
         <attr name="XTextTopMargin" />
         <attr name="XTextColor" />
         <attr name="FormLineColor" />
-
-        <attr name="BarTopTextSize" format="dimension" />
-        <attr name="BarTopTextBottomMargin" format="dimension" />
-        <attr name="BarTopTextColor" format="color" />
-        <attr name="BarRadius" format="dimension" />
-        <attr name="BarColor" format="color" />
+        <attr name="BarTopTextSize" />
+        <attr name="BarTopTextBottomMargin" />
+        <attr name="BarTopTextColor" />
+        <attr name="BarRadius" />
+        <attr name="BarColor" />
     </declare-styleable>
 
     <declare-styleable name="LineChartView">
@@ -32,15 +43,31 @@
         <attr name="XTextSize" />
         <attr name="XTextTopMargin" />
         <attr name="XTextColor" />
+        <attr name="LineTextSize" />
+        <attr name="LineTextBottomMargin" />
+        <attr name="LineTextColor" />
+        <attr name="LineColor" />
+        <attr name="ContentBgColor" />
+        <attr name="DotRadius" />
+        <attr name="DotColor" />
         <attr name="FormLineColor" />
+    </declare-styleable>
 
-        <attr name="LineTextSize" format="dimension" />
-        <attr name="LineTextBottomMargin" format="dimension" />
-        <attr name="LineTextColor" format="color" />
-        <attr name="LineColor" format="color" />
-        <attr name="ContentBgColor" format="color" />
-        <attr name="DotRadius" format="dimension" />
-        <attr name="DotColor" format="color" />
+    <declare-styleable name="CurveChartView">
+        <attr name="YTextSize" />
+        <attr name="YTextRightMargin" />
+        <attr name="YTextColor" />
+        <attr name="XTextSize" />
+        <attr name="XTextTopMargin" />
+        <attr name="XTextColor" />
+        <attr name="LineTextSize" />
+        <attr name="LineTextBottomMargin" />
+        <attr name="LineTextColor" />
+        <attr name="LineColor" />
+        <attr name="ContentBgColor" />
+        <attr name="DotRadius" />
+        <attr name="DotColor" />
+        <attr name="FormLineColor" />
     </declare-styleable>
 
 </resources>

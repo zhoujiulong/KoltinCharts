@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -11,7 +12,20 @@
         android:layout_width="match_parent"
         android:layout_height="300dp"
         android:layout_centerInParent="true"
-        android:padding="30dp" />
+        android:padding="30dp"
+        app:DotColor="#CE0E2D"
+        app:DotRadius="2dp"
+        app:FormLineColor="#9B9B9B"
+        app:LineColor="#CE0E2D"
+        app:LineTextBottomMargin="4dp"
+        app:LineTextColor="#CE0E2D"
+        app:LineTextSize="6dp"
+        app:XTextColor="#000000"
+        app:XTextSize="8dp"
+        app:XTextTopMargin="4dp"
+        app:YTextColor="#000000"
+        app:YTextRightMargin="4dp"
+        app:YTextSize="8dp" />
 
     <TextView
         android:id="@+id/resetData"

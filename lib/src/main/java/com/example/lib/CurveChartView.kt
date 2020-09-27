@@ -131,24 +131,26 @@ class CurveChartView : View {
 
     private fun init(attrs: AttributeSet?) {
         attrs?.apply {
-            val ta = context.obtainStyledAttributes(attrs, R.styleable.LineChartView)
-            mYTextSize = ta.getDimension(R.styleable.LineChartView_YTextSize, mYTextSize)
+            val ta = context.obtainStyledAttributes(attrs, R.styleable.CurveChartView)
+            mYTextSize = ta.getDimension(R.styleable.CurveChartView_YTextSize, mYTextSize)
             mYTextRightMargin =
-                ta.getDimension(R.styleable.LineChartView_YTextRightMargin, mYTextRightMargin)
-            mYTextColor = ta.getColor(R.styleable.LineChartView_YTextColor, mYTextColor)
-            mXTextSize = ta.getDimension(R.styleable.LineChartView_XTextSize, mXTextSize)
+                ta.getDimension(R.styleable.CurveChartView_YTextRightMargin, mYTextRightMargin)
+            mYTextColor = ta.getColor(R.styleable.CurveChartView_YTextColor, mYTextColor)
+            mXTextSize = ta.getDimension(R.styleable.CurveChartView_XTextSize, mXTextSize)
             mXTextTopMargin =
-                ta.getDimension(R.styleable.LineChartView_XTextTopMargin, mXTextTopMargin)
-            mXTextColor = ta.getColor(R.styleable.LineChartView_XTextColor, mXTextColor)
-            mLineTextSize = ta.getDimension(R.styleable.LineChartView_LineTextSize, mLineTextSize)
+                ta.getDimension(R.styleable.CurveChartView_XTextTopMargin, mXTextTopMargin)
+            mXTextColor = ta.getColor(R.styleable.CurveChartView_XTextColor, mXTextColor)
+            mLineTextSize = ta.getDimension(R.styleable.CurveChartView_LineTextSize, mLineTextSize)
             mLineTextBottomMargin = ta.getDimension(
-                R.styleable.LineChartView_LineTextBottomMargin, mLineTextBottomMargin
+                R.styleable.CurveChartView_LineTextBottomMargin, mLineTextBottomMargin
             )
-            mLineTextColor = ta.getColor(R.styleable.LineChartView_LineTextColor, mLineTextColor)
-            mLineColor = ta.getColor(R.styleable.LineChartView_LineColor, mLineColor)
-            mDotRadius = ta.getDimension(R.styleable.LineChartView_DotRadius, mDotRadius)
-            mDotColor = ta.getColor(R.styleable.LineChartView_DotColor, mDotColor)
-            mFormLineColor = ta.getColor(R.styleable.LineChartView_FormLineColor, mFormLineColor)
+            mLineTextColor = ta.getColor(R.styleable.CurveChartView_LineTextColor, mLineTextColor)
+            mLineColor = ta.getColor(R.styleable.CurveChartView_LineColor, mLineColor)
+            mContentBgColor =
+                ta.getColor(R.styleable.CurveChartView_ContentBgColor, mContentBgColor)
+            mDotRadius = ta.getDimension(R.styleable.CurveChartView_DotRadius, mDotRadius)
+            mDotColor = ta.getColor(R.styleable.CurveChartView_DotColor, mDotColor)
+            mFormLineColor = ta.getColor(R.styleable.CurveChartView_FormLineColor, mFormLineColor)
             ta.recycle()
         }
         mAni.start()
