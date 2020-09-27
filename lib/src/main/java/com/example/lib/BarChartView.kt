@@ -30,9 +30,7 @@ class BarChartView : View {
         paint.strokeWidth = 1F
         paint
     }
-
-    //绘制虚线
-    private val mEffectPaint by lazy {
+    private val mEffectPaint by lazy {//绘制虚线
         val paint = Paint()
         val pathEffect = DashPathEffect(floatArrayOf(8F, 8F), 1F)
         paint.style = Paint.Style.STROKE
@@ -42,9 +40,7 @@ class BarChartView : View {
         paint.pathEffect = pathEffect
         paint
     }
-
-    //绘制条形
-    private val mPath by lazy { Path() }
+    private val mPath by lazy { Path() }//绘制条形
 
     //动画加载进度
     private var mAniProgress: Float = 0F
@@ -83,14 +79,10 @@ class BarChartView : View {
     private var mBarSpace: Float = 20F//条形与条形之前的距离
     private var mFormLineColor: Int = Color.parseColor("#B4BBC6")//表格中线的颜色
 
-    //y 方向有多少等分
-    private var mYSpace: Int = 6
+    private var mYSpace: Int = 6//y 方向有多少等分
+    private var mFormYBarSpace: Float = 20F//y 方向每等分的高度
 
-    //y 方向每等分的高度
-    private var mFormYBarSpace: Float = 20F
-
-    //y 方向每等分数值
-    private var mYSpaceSize: BigDecimal = BigDecimal(0)
+    private var mYSpaceSize: BigDecimal = BigDecimal(0)//y 方向每等分数值
     private var mFormTopEmpty: Float = 20F
 
     constructor(context: Context) : super(context) {
@@ -158,8 +150,6 @@ class BarChartView : View {
             measuredWidth - (paddingLeft + paddingRight) - (mYTextMaxWidth + mYTextRightMargin)
         val temp = 1.5F//两个条形的距离与条形宽度的比值
         mBarWidth = formWidth / (mData.size + (mData.size + 1) * temp)
-        //条形圆角的大小不能超过条形宽度的一半
-        if (mBarWidth / 2 < mBarRadius) mBarRadius = mBarWidth / 2
         mBarSpace = mBarWidth * temp
 
         val formHeight =
@@ -219,8 +209,6 @@ class BarChartView : View {
      * 绘制表中的条形以及条形对应的内容
      */
     private fun drawFormContent(canvas: Canvas) {
-        if (mData.size == 0) return
-
         val bottomTextY = (measuredHeight - paddingBottom).toFloat()
         val barEndY = bottomTextY - mXTextSize - mXTextTopMargin
         val formContentStartX = paddingLeft + mYTextMaxWidth + mYTextRightMargin
@@ -232,8 +220,8 @@ class BarChartView : View {
         var left: Float
         var top: Float
         var right: Float
-        var tempBarRadius: Float
-        for (i in 0 until mData.size) {
+        var tempRadius: Float
+        for (i in mData.indices) {
             barCenterX = formContentStartX + mBarSpace * (i + 1) + ((i + 0.5F) * mBarWidth)
 
             //绘制底部文字
@@ -251,14 +239,16 @@ class BarChartView : View {
             left = barCenterX - mFormBarHelfWidth
             top = barEndY - barHeight
             right = barCenterX + mFormBarHelfWidth
+            //条形圆角的大小不能超过条形宽度的一半
+            tempRadius = if (mBarWidth / 2 < mBarRadius) mBarWidth / 2 else mBarRadius
             //如果条形的高度小于圆角半径则去条形的高度为半径
-            tempBarRadius = if (barHeight > mBarRadius) mBarRadius else barHeight
+            tempRadius = if (barHeight > tempRadius) tempRadius else barHeight
             mPath.reset()
             mPath.moveTo(left, barEndY)
-            mPath.lineTo(left, top + tempBarRadius)
-            mPath.quadTo(left, top, left + tempBarRadius, top)
-            mPath.lineTo(right - tempBarRadius, top)
-            mPath.quadTo(right, top, right, top + tempBarRadius)
+            mPath.lineTo(left, top + tempRadius)
+            mPath.quadTo(left, top, left + tempRadius, top)
+            mPath.lineTo(right - tempRadius, top)
+            mPath.quadTo(right, top, right, top + tempRadius)
             mPath.lineTo(right, barEndY)
             mPath.close()
             canvas.drawPath(mPath, mPaint)
@@ -279,7 +269,7 @@ class BarChartView : View {
      */
     private fun getMaxNum(): BigDecimal {
         var max = BigDecimal(0)
-        if (mData.size == 0) return max
+        if (mData.isEmpty()) return max
         mData.forEach {
             if (max < it.data) max = it.data
         }
