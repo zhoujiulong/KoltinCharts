@@ -25,6 +25,10 @@ class MainActivity : AppCompatActivity() {
         curveChart.setOnClickListener {
             startActivity(Intent(this, CurveChartActivity::class.java))
         }
+
+        pieChart.setOnClickListener {
+            startActivity(Intent(this, PieChartActivity::class.java))
+        }
     }
 
 }

@@ -18,8 +18,8 @@ class CurveChartView : View {
     var mData: ArrayList<ChartDataBean> = arrayListOf()
         set(value) {
             field = value
-            setMeasureData()
             mAni.cancel()
+            setMeasureData()
             mAni.start()
         }
 

@@ -19,6 +19,7 @@ class BarChartView : View {
         set(value) {
             field = value
             mAni.cancel()
+            setMeasureData()
             mAni.start()
         }
 
@@ -148,7 +149,10 @@ class BarChartView : View {
 
     override fun onLayout(changed: Boolean, left: Int, top: Int, right: Int, bottom: Int) {
         super.onLayout(changed, left, top, right, bottom)
+        setMeasureData()
+    }
 
+    private fun setMeasureData() {
         initYSpaceSize()
         mYTextMaxWidth = getStringWidth("${getMaxNum().toInt()}", mYTextSize)
         val formWidth =
