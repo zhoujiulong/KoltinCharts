@@ -1,2 +1,2 @@
-# KoltinCharts
-Koltin 条形图、折线图、曲线图、饼状图
+### 先上效果图
+<img src="https://github.com/zhoujiulong/KoltinCharts/tree/master/pic/bar_chart.gif" width="23%"/><img src="https://github.com/zhoujiulong/KoltinCharts/tree/master/pic/line_chart.gif" width="23%"/><img src="https://github.com/zhoujiulong/KoltinCharts/tree/master/pic/curve_chart.gif" width="23%"/><img src="https://github.com/zhoujiulong/KoltinCharts/tree/master/pic/pie_chart.gif" width="23%"/>
