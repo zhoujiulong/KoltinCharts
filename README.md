@@ -1,4 +1,4 @@
-### 先上效果图
+### 先上效果图，如果无法查看图片请到 https://www.jianshu.com/p/5cdf7d54d4aa 查看展示效果
 <img src="https://github.com/zhoujiulong/KoltinCharts/tree/master/pic/bar_chart.gif" width="23%"/><img src="https://github.com/zhoujiulong/KoltinCharts/tree/master/pic/line_chart.gif" width="23%"/><img src="https://github.com/zhoujiulong/KoltinCharts/tree/master/pic/curve_chart.gif" width="23%"/><img src="https://github.com/zhoujiulong/KoltinCharts/tree/master/pic/pie_chart.gif" width="23%"/>
 ### 添加项目依赖
     1、在项目根路径下的 build.gralde 中添加
