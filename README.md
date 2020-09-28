@@ -30,6 +30,14 @@
         app:YTextColor="#000000"
         app:YTextRightMargin="4dp"
         app:YTextSize="8dp" />
+        
+        val list = arrayListOf<ChartBean>()
+        list.add(ChartBean("微信", BigDecimal(52000)))
+        list.add(ChartBean("支付宝", BigDecimal(39000)))
+        list.add(ChartBean("余额", BigDecimal(28800)))
+        list.add(ChartBean("现金", BigDecimal(20000)))
+        list.add(ChartBean("标记收款", BigDecimal(500)))
+        barChartView.mData = list
        
 ### 折线图使用
     <com.example.lib.LineChartView
@@ -51,6 +59,16 @@
         app:YTextColor="#000000"
         app:YTextRightMargin="4dp"
         app:YTextSize="8dp" />
+        
+        val list = arrayListOf<ChartBean>()
+        list.add(ChartBean("9/1", BigDecimal(30000)))
+        list.add(ChartBean("9/2", BigDecimal(21000)))
+        list.add(ChartBean("9/3", BigDecimal(42800)))
+        list.add(ChartBean("9/4", BigDecimal(39000)))
+        list.add(ChartBean("9/5", BigDecimal(63000)))
+        list.add(ChartBean("9/6", BigDecimal(38000)))
+        lineChartView.mData = list
+        
 ### 曲线图使用
     <com.example.lib.CurveChartView
         android:id="@+id/curveChartView"
@@ -71,6 +89,16 @@
         app:YTextColor="#000000"
         app:YTextRightMargin="4dp"
         app:YTextSize="8dp" />
+        
+        val list = arrayListOf<ChartBean>()
+        list.add(ChartBean("9/1", BigDecimal(40000)))
+        list.add(ChartBean("9/2", BigDecimal(35000)))
+        list.add(ChartBean("9/3", BigDecimal(56800)))
+        list.add(ChartBean("9/4", BigDecimal(45000)))
+        list.add(ChartBean("9/5", BigDecimal(38000)))
+        list.add(ChartBean("9/6", BigDecimal(52000)))
+        curveChartView.mData = list
+        
 ### 饼状图使用
     <com.example.lib.PieChartView
         android:id="@+id/pieChartView"
@@ -83,3 +111,12 @@
         app:PieTextSize="8dp"
         app:TextSize="10dp"
         app:TextTopMargin="6dp" />
+        
+        val list = arrayListOf<PieChartBean>()
+        list.add(PieChartBean("微信收款", BigDecimal(30), Color.BLUE))
+        list.add(PieChartBean("支付宝收款", BigDecimal(22), Color.GREEN))
+        list.add(PieChartBean("余额收款", BigDecimal(21), Color.LTGRAY))
+        list.add(PieChartBean("现金收款", BigDecimal(15), Color.CYAN))
+        list.add(PieChartBean("标记收款", BigDecimal(7), Color.MAGENTA))
+        list.add(PieChartBean("其它收款", BigDecimal(5), Color.DKGRAY))
+        pieChartView.mData = list
