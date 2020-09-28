@@ -3,9 +3,9 @@
     <style name="AppTheme" parent="Theme.AppCompat.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorWhite</item>
+        <item name="colorPrimaryDark">@color/colorPrimary</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <item name="background">@color/colorWhite</item>
+        <item name="android:windowBackground">@color/colorWhite</item>
     </style>
 
     <style name="AppTheme.NoActionBar">
