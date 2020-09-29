@@ -1,4 +1,4 @@
-package com.example.lib
+package com.zhoujiulong.charts
 
 import android.animation.ValueAnimator
 import android.content.Context

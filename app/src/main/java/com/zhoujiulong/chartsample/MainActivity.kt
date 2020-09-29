@@ -1,4 +1,4 @@
-package com.example.chartsample
+package com.zhoujiulong.chartsample
 
 import android.content.Intent
 import android.os.Bundle

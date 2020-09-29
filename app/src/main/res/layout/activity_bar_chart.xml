@@ -7,7 +7,7 @@
     tools:context=".BarChartActivity">
 
 
-    <com.example.lib.BarChartView
+    <com.zhoujiulong.charts.BarChartView
         android:id="@+id/barChartView"
         android:layout_width="match_parent"
         android:layout_height="300dp"

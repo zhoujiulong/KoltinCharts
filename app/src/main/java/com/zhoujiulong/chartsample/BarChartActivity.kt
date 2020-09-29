@@ -1,8 +1,8 @@
-package com.example.chartsample
+package com.zhoujiulong.chartsample
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.example.lib.ChartBean
+import com.zhoujiulong.charts.ChartBean
 import kotlinx.android.synthetic.main.activity_bar_chart.*
 import java.math.BigDecimal
 

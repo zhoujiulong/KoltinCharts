@@ -1,4 +1,4 @@
-package com.example.lib
+package com.zhoujiulong.charts
 
 import android.animation.ValueAnimator
 import android.content.Context
@@ -11,9 +11,9 @@ import androidx.annotation.RequiresApi
 import java.math.BigDecimal
 
 /**
- * 折线图
+ * 曲线图
  */
-class LineChartView : View {
+class CurveChartView : View {
 
     var mData: List<ChartBean> = arrayListOf()
         set(value) {
@@ -26,6 +26,13 @@ class LineChartView : View {
     private val mPaint by lazy {
         val paint = Paint()
         paint.style = Paint.Style.FILL
+        paint.isAntiAlias = true
+        paint.strokeWidth = 1F
+        paint
+    }
+    private val mCurveLinePaint by lazy {
+        val paint = Paint()
+        paint.style = Paint.Style.STROKE
         paint.isAntiAlias = true
         paint.strokeWidth = 1F
         paint
@@ -80,7 +87,7 @@ class LineChartView : View {
     private var mLineTextBottomMargin = 12F//条形顶部描述文字底部离条形的距离
     private var mLineTextColor: Int = Color.parseColor("#1B4073")//条形顶部文字颜色
 
-    private var mLineColor: Int = Color.parseColor("#000000")//表格折线的颜色
+    private var mLineColor: Int = Color.parseColor("#000000")//表格曲线的颜色
     private var mContentBgColor: Int = Color.parseColor("#88ABCDEF")//表格内容背景颜色
     private var mDotRadius: Float = 4F//折线中点的半径
     private var mDotColor: Int = Color.parseColor("#000000")//折线圆点颜色
@@ -124,25 +131,26 @@ class LineChartView : View {
 
     private fun init(attrs: AttributeSet?) {
         attrs?.apply {
-            val ta = context.obtainStyledAttributes(attrs, R.styleable.LineChartView)
-            mYTextSize = ta.getDimension(R.styleable.LineChartView_YTextSize, mYTextSize)
+            val ta = context.obtainStyledAttributes(attrs, R.styleable.CurveChartView)
+            mYTextSize = ta.getDimension(R.styleable.CurveChartView_YTextSize, mYTextSize)
             mYTextRightMargin =
-                ta.getDimension(R.styleable.LineChartView_YTextRightMargin, mYTextRightMargin)
-            mYTextColor = ta.getColor(R.styleable.LineChartView_YTextColor, mYTextColor)
-            mXTextSize = ta.getDimension(R.styleable.LineChartView_XTextSize, mXTextSize)
+                ta.getDimension(R.styleable.CurveChartView_YTextRightMargin, mYTextRightMargin)
+            mYTextColor = ta.getColor(R.styleable.CurveChartView_YTextColor, mYTextColor)
+            mXTextSize = ta.getDimension(R.styleable.CurveChartView_XTextSize, mXTextSize)
             mXTextTopMargin =
-                ta.getDimension(R.styleable.LineChartView_XTextTopMargin, mXTextTopMargin)
-            mXTextColor = ta.getColor(R.styleable.LineChartView_XTextColor, mXTextColor)
-            mLineTextSize = ta.getDimension(R.styleable.LineChartView_LineTextSize, mLineTextSize)
+                ta.getDimension(R.styleable.CurveChartView_XTextTopMargin, mXTextTopMargin)
+            mXTextColor = ta.getColor(R.styleable.CurveChartView_XTextColor, mXTextColor)
+            mLineTextSize = ta.getDimension(R.styleable.CurveChartView_LineTextSize, mLineTextSize)
             mLineTextBottomMargin = ta.getDimension(
-                R.styleable.LineChartView_LineTextBottomMargin, mLineTextBottomMargin
+                R.styleable.CurveChartView_LineTextBottomMargin, mLineTextBottomMargin
             )
-            mLineTextColor = ta.getColor(R.styleable.LineChartView_LineTextColor, mLineTextColor)
-            mLineColor = ta.getColor(R.styleable.LineChartView_LineColor, mLineColor)
-            mContentBgColor = ta.getColor(R.styleable.LineChartView_ContentBgColor, mContentBgColor)
-            mDotRadius = ta.getDimension(R.styleable.LineChartView_DotRadius, mDotRadius)
-            mDotColor = ta.getColor(R.styleable.LineChartView_DotColor, mDotColor)
-            mFormLineColor = ta.getColor(R.styleable.LineChartView_FormLineColor, mFormLineColor)
+            mLineTextColor = ta.getColor(R.styleable.CurveChartView_LineTextColor, mLineTextColor)
+            mLineColor = ta.getColor(R.styleable.CurveChartView_LineColor, mLineColor)
+            mContentBgColor =
+                ta.getColor(R.styleable.CurveChartView_ContentBgColor, mContentBgColor)
+            mDotRadius = ta.getDimension(R.styleable.CurveChartView_DotRadius, mDotRadius)
+            mDotColor = ta.getColor(R.styleable.CurveChartView_DotColor, mDotColor)
+            mFormLineColor = ta.getColor(R.styleable.CurveChartView_FormLineColor, mFormLineColor)
             ta.recycle()
         }
     }
@@ -253,18 +261,22 @@ class LineChartView : View {
             canvas.clipRect(0, 0, endX.toInt(), measuredHeight)
         }
 
-        //绘制折线
-        mPath.reset()
-        mPath.moveTo(formContentStartX, formContentBottom)
+        //绘制曲线
         var previousX = formContentStartX
         var previousY = formContentBottom
-        mPaint.color = mLineColor
+        var curveTempX: Float
+        mPath.reset()
+        mPath.moveTo(formContentStartX, formContentBottom)
         lineDotList.forEach {
-            mPath.lineTo(it.x, it.y)
-            canvas.drawLine(previousX, previousY, it.x, it.y, mPaint)
+            curveTempX = (previousX + it.x) / 2F
+            mPath.cubicTo(curveTempX, previousY, curveTempX, it.y, it.x, it.y)
             previousX = it.x
             previousY = it.y
         }
+        mCurveLinePaint.color = mLineColor
+        canvas.drawPath(mPath, mCurveLinePaint)
+
+        //绘制内容背景，把路径闭合一下就可以了
         if (lineDotList.size > 0) mPath.lineTo(
             lineDotList[lineDotList.size - 1].x, formContentBottom
         )
@@ -272,7 +284,7 @@ class LineChartView : View {
         mPaint.color = mContentBgColor
         canvas.drawPath(mPath, mPaint)
 
-        //绘制折线中的圆点和圆点上的文字
+        //绘制曲线中的圆点和圆点上的文字
         mPaint.textSize = mLineTextSize
         lineDotList.withIndex().forEach {
             mPaint.color = mDotColor

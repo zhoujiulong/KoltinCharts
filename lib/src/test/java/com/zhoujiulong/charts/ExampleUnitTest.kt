@@ -1,4 +1,4 @@
-package com.example.chartsample
+package com.zhoujiulong.charts
 
 import org.junit.Test
 

@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".LineChartActivity">
 
-    <com.example.lib.LineChartView
+    <com.zhoujiulong.charts.LineChartView
         android:id="@+id/lineChartView"
         android:layout_width="match_parent"
         android:layout_height="300dp"

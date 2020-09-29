@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".CurveChartActivity">
 
-    <com.example.lib.CurveChartView
+    <com.zhoujiulong.charts.CurveChartView
         android:id="@+id/curveChartView"
         android:layout_width="match_parent"
         android:layout_height="300dp"

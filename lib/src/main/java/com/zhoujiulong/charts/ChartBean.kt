@@ -1,4 +1,4 @@
-package com.example.lib
+package com.zhoujiulong.charts
 
 import androidx.annotation.ColorInt
 import java.math.BigDecimal
