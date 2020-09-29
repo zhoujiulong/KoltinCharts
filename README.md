@@ -10,7 +10,7 @@
       }
     }
     2、在项目中添加下面依赖
-    implementation 'com.github.zhoujiulong:KoltinCharts:1.0.3'
+    implementation 'com.github.zhoujiulong:KoltinCharts:1.0.2'
 ### 条形图使用
     <com.zhoujiulong.charts.BarChartView
         android:id="@+id/barChartView"
